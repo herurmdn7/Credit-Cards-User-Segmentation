@@ -42,7 +42,10 @@ This project focuses on segmenting credit card users based on their purchasing b
 
 ### 4. Data
 - **Source**: Credit card transaction data sourced from **BigQuery**.
-- **Data Cleaning**: The dataset was cleaned to remove missing values and outliers. Unnecessary columns were dropped to improve model performance.
+- **Data Cleaning**:
+  - There were no duplicate records in the dataset.
+  - Missing values were found in the `payments` and `minimum_payments` columns, totaling 159 missing values, accounting for 3% of the data.
+  - Since the missing values constituted less than 5% of the dataset, the rows containing missing values were dropped.
 - **Structure**: The dataset contains information about credit card usage behavior, including transaction amounts, frequency, and various spending categories.
 
 ---
@@ -61,10 +64,28 @@ This project focuses on segmenting credit card users based on their purchasing b
 ---
 
 ### 7. Results
-The segmentation process successfully identified different customer segments based on their credit card usage. Key insights include:
-- **High Spenders**: Users with high transaction amounts but lower frequency.
-- **Frequent Shoppers**: Users with a high frequency of smaller transactions.
-- **Balanced Users**: Users with moderate spending and transaction frequency.
+
+**Cluster 0: High Financial Activity / High Value User**  
+Users with frequent, high-value transactions. This group represents high-value customers with significant financial activity.
+
+**Cluster 1: Low Financial Activity / Low Spender**  
+Users with infrequent and low-value transactions, representing low financial activity.
+
+**Cluster 2: Mid Financial Activity / Frequent Mid Spender**  
+Users with frequent transactions but lower amounts, indicating moderate financial activity.
+
+**Cluster 3: High Balance / Low Spender**  
+Users with high balances but infrequent spending, indicating untapped financial potential.
+
+---
+
+**Recommendations**:
+
+- **Cluster 0**: Offer loyalty programs and personalized services to retain these high-value users.
+- **Cluster 1**: Introduce 0% interest promotions and gradually increase limits to encourage spending.
+- **Cluster 2**: Combine strategies from high and low spenders, offering rewards for frequent purchases.
+- **Cluster 3**: Offer bundled deals or rewards for higher spending to incentivize transactions.
+
 
 ---
 
